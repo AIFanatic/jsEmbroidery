@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+        
+        <style>
+            html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+
+            #graphcanvas {
+                background-color: #fef9e7;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style="width: 100%; height: 100%;">
+            <canvas id="graphcanvas"></canvas>
+        </div>
+
+        <script type="module">
+            import { Embroidery } from './jsEmbroidery.js';
+
+            const canvas = document.getElementById("graphcanvas");
+            const embroidery = new Embroidery(canvas);
+        </script>
+    </body>
+</html>

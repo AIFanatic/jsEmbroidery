@@ -1,0 +1,13 @@
+{
+  "name": "jsembroidery",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.13.14"
+  },
+  "scripts": {
+    "dev": "esbuild src/index.ts --bundle --outfile=dist/jsEmbroidery.js --target=es6 --format=esm --watch"
+  },
+  "dependencies": {}
+}
