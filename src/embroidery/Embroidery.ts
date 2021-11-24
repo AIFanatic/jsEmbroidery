@@ -7,6 +7,9 @@ import { Graph } from "../Graph";
 import { GraphNode } from "../node/GraphNode";
 import { EmbConstant } from "./EmbConstant";
 
+import * as ImageTracer from 'imagetracerjs';
+import * as potrace from 'potrace';
+
 export class Embroidery {
     private graph: Graph;
 
@@ -79,6 +82,26 @@ export class Embroidery {
 
         this.graph = new Graph(canvas);
         this.graph.registerNode("Embroidery", GraphNode);
+
+
+        // const svgBox = document.createElement("div");
+        // document.body.appendChild(svgBox)
+        // // ImageTracer.imageToSVG(
+        // //     "./data/smile-transparent.png",
+        // //     (svg) => {
+        // //         svgBox.innerHTML = svg;
+        // //         console.log("svg", svg)
+        // //     }
+        // // )
+        // // console.log("here", ImageTracer)
+
+        // potrace.trace('./data/spiral.png', null, function(err, svg) {
+        //     if (err) throw err;
+        //     console.log(svg)
+        //     svgBox.innerHTML = svg;
+        // });
+
+        // console.log(potrace)
     }
 
     private onFileExportClicked() {
@@ -237,6 +260,8 @@ export class Embroidery {
 
         node.properties.pattern = pattern;
 
-        this.graph.dirtyCanvas = true;
+        setTimeout(() => {
+            this.graph.dirtyCanvas = true;
+        }, 100);
     }
 }

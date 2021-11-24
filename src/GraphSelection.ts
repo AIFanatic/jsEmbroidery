@@ -36,6 +36,10 @@ export class GraphSelection {
 
     public onMouseDown(event: IMouseEvent) {
         if (event.button == MouseButton.RIGHT) return;
+        if (event.rawEvent instanceof TouchEvent && event.rawEvent.touches.length > 1) {
+            this.selectedNode = null;
+            return;
+        }
         
         this.mousePosition = event.position;
         this.isMouseDown = true;

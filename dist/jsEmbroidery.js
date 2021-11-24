@@ -1748,6 +1748,10 @@ var GraphSelection = class {
   onMouseDown(event) {
     if (event.button == MouseButton.RIGHT)
       return;
+    if (event.rawEvent instanceof TouchEvent && event.rawEvent.touches.length > 1) {
+      this.selectedNode = null;
+      return;
+    }
     this.mousePosition = event.position;
     this.isMouseDown = true;
     if (this.selectedNode) {
@@ -2228,7 +2232,9 @@ var Embroidery = class {
     node.properties.position.x = extents[0];
     node.properties.position.y = extents[1];
     node.properties.pattern = pattern;
-    this.graph.dirtyCanvas = true;
+    setTimeout(() => {
+      this.graph.dirtyCanvas = true;
+    }, 100);
   }
 };
 export {
